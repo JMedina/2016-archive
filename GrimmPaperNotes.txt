@@ -1,0 +1,28 @@
+Grimm paper notes
+
+benefits to understanding operator gaze:
+	-provides information about the importance of different features of an object to completing a task
+
+humans rarely look at their own hands when grasping
+	-means we need to improve simulator interfaces by providing the correct visual cues of the object and its surroundings
+
+Contributions:
+	-identified a complex fixation pattern for complex objects
+	-identified visual cues used to compensate for lack of proprioception
+	-use these cues to create better camera viewpoints
+
+Problems with "learning from demonstration"
+	-too time intensive
+	-humans overestimate grasps that look "human"
+
+Where people look during grasps with their own hands
+	-mixture of tracking the following:
+		*object's center of mass
+		*top of object
+		*where the forefinger will make contact with the object
+
+Physical study method
+	-Participants performed manipulation tasks with own hand and physically manipulating a robotic arm
+	-eye gaze was tracked and they were asked to "think aloud" throughout
+	-camera viewpoints for grasp evaluation developed from this experiment were validated by an online survey
+
