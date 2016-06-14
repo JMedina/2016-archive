@@ -1,0 +1,23 @@
+PCL notes:
+
+Capapbilities:
+	-filtering
+	-feature estimation
+	-surface reconstruction
+	-model fitting
+	-segmentation
+
+Workflow:
+	-create processing object (eg. filter, feature estimation)
+	-use setInputCloud to pass the input pointcloud dataset to the processing object
+	-set parameters and stuff
+	-call compute to get the output
+
+Seperate PCL libraries:
+	-libpcl.filters: 
+		*implements data filters. Downsampling, outlier removal, projections, etc
+	-libpcl.features:
+		*implements 3D features like surface normals and curvatures, boundary point estimation, RIFT, VFH, SIFT. This will probably be the important one
+	-libpcl.io:
+		*implements I/O operations like writing to/reading from PCD files.
+	-
