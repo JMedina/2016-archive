@@ -1,0 +1,39 @@
+PCLBasicStructures.txt
+Notes on the PointCloud class
+http://pointclouds.org/documentation/tutorials
+									/basic_structures.php#basic-structures
+
+PointClouds contain the following data fields:
+
+width(int): specifies # of points in unorganized clouds, width in organized
+height(int): has two meanings:
+	-Specifies total # of rows of an organized point cloud dataset(PCD)
+	-is set to 1 for unorganized datasets
+	 (used to check whether datset is organized or not)
+	
+	Examples:
+	cloud.width = 640; // there are 640 points per line
+	--
+	// Image-like organized structure, with 640 rows and 480 columns,
+	// thus 640*480=307200 points total in the dataset
+	cloud.width = 640;
+	cloud.height = 480;
+	--
+	cloud.width = 307200;
+	cloud.height = 1; // unorganized point cloud dataset with 307200 points
+
+points(std::vector<pointT>)
+	-contains the data array where all the points of type pointT are stored
+
+	Example:
+	pcl::PointCloud<pcl::PointXYZ> cloud;
+	std::vector<pcl::PointXYZ> data = cloud.points;
+
+is_dense (bool):
+	-True if all data points are defined/finite, false otherwise.
+
+sensor_origin_ (Eigen::Vector4f):
+	-Specifies the sensor acquisition pose (origin/translation)
+
+sensor_orientation_ (Eigen::Quaternionf)
+	-Specifies the sensor acquisition pose (orientation)
