@@ -1,4 +1,7 @@
-PCL notes:
+PCLnotes.txt
+Author: Julio A. Medina, 6/14/16
+Notes on the Point Cloud Library interface
+Taken from this paper: http://www.pointclouds.org/assets/pdf/pcl_icra2011.pdf
 
 Capapbilities:
 	-filtering
@@ -7,6 +10,10 @@ Capapbilities:
 	-model fitting
 	-segmentation
 
+-------------------------------------------
+	Architecture and implementation
+-------------------------------------------
+
 Workflow:
 	-create processing object (eg. filter, feature estimation)
 	-use setInputCloud to pass the input pointcloud dataset to the processing object
@@ -14,10 +21,54 @@ Workflow:
 	-call compute to get the output
 
 Seperate PCL libraries:
-	-libpcl.filters: 
-		*implements data filters. Downsampling, outlier removal, projections, etc
-	-libpcl.features:
-		*implements 3D features like surface normals and curvatures, boundary point estimation, RIFT, VFH, SIFT. This will probably be the important one
-	-libpcl.io:
-		*implements I/O operations like writing to/reading from PCD files.
-	-
+	-libpcl_filters: 
+		*data filters. Downsampling, outlier removal, projections, etc
+	
+	-libpcl_features:
+		*3D features like surface normals and curvatures, boundary point estimation, RIFT, VFH, SIFT. This will probably be the important one
+
+	-libpcl_io:
+		*I/O operations like writing to/reading from PCD files.
+
+	-libpcl_segmentation:
+		*cluster extration, model fitting for planes, cylinders, spheres, lines, etc. polygonal prism extraction, etc
+
+	-libpcl_registration:
+		*point cloud registration methods like ICP, etc
+
+	-libpcl_keypoints:
+		*implements different keypoint extraction methods. Can be used as a preprocessing stem to decide where to extract feature descriptors
+
+	-libpcl_range_image:
+		*support for range images created from point cloud datasets
+
+
+-------------------------------------------
+ 	           PCL and ROS
+-------------------------------------------
+
+Perception Processing Graphs (PPG)
+	-Each algorithm in PCL is available as a standalone building block
+	-A PPG is a system of connected building blocks
+	-Same as nodes connected together in a ROS ecosystem
+	-look into nodelets, which save space and run in a single process.
+
+
+-------------------------------------------
+      	      Visualization
+-------------------------------------------
+
+Visualization library meant to integrate PCL with VTK (vizualization toolkit)
+
+As of version 0.2:
+	-rendering and setting visual properties (colors, point sizes, opacity, etc) for any pointcloud dataset
+	
+	-methods for drawing basic 3D shapes on screen (cylinders, spheres, lines, polygons, etc) either from sets or points or from parametric equations
+
+	-Histogram vizualization module (PCLHistogramVisualizer) for 2D plots
+	
+	-various geometry and color handlers.
+		*can specify what dimensions to be used for point positions in 3D cartesian space
+		*can specify what colors should be used to render the points	
+
+	-RangeImage visualization modules. (this is super cool)
