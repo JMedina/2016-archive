@@ -1,0 +1,12 @@
+Main documentation page:
+http://docs.pointclouds.org/trunk/index.html
+
+How to compile and test code:
+http://www.pointclouds.org/documentation/tutorials/using_pcl_pcl_config.php
+
+How to write data to pcd files:
+http://www.pointclouds.org/documentation/tutorials/writing_pcd.php#writing-pcd
+
+How to use the cloud viewer:
+http://www.pointclouds.org/documentation/tutorials/cloud_viewer.php#cloud-viewer
+
